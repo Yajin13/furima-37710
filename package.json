@@ -7,9 +7,13 @@
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/actioncable": "^6.0.0-alpha"
   },
-  "version": "0.1.0"
-  ,"engines" : {
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  },
+  "engines" : {
     "node": "14.19.2"
   }
 }
+ 
 
