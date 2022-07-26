@@ -8,4 +8,8 @@
     "@rails/actioncable": "^6.0.0-alpha"
   },
   "version": "0.1.0"
+  ,"engines" : {
+    "node": "14.19.2"
+  }
 }
+
