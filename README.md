@@ -28,13 +28,13 @@
 | item_condition_id   | integer    | null: false                    |
 | delivery_charge_id  | integer    | null: false                    |
 | prefecture_id       | integer    | null: false                    |
-| delivery_days_id    | integer    | null: false                    |
+| delivery_day _id    | integer    | null: false                    |
 | price               | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :user
+- has_many :user
 - has_one :purchase_record
 
 ## purchase_records テーブル
