@@ -27,7 +27,7 @@
 | item_category_id    | integer    | null: false                    |
 | item_condition_id   | integer    | null: false                    |
 | delivery_charge_id  | integer    | null: false                    |
-| delivery_area_id    | integer    | null: false                    |
+| prefecture_id       | integer    | null: false                    |
 | delivery_days_id    | integer    | null: false                    |
 | price               | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
@@ -37,7 +37,7 @@
 - has_one :user
 - has_one :purchase_record
 
-## purchase_record テーブル
+## purchase_records テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -50,19 +50,18 @@
 - belongs_to :item
 - has_one :address
 
-## address テーブル
+## addresses テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| post_code     | string     | null: false, foreign_key: true |
-| prefecture_id | integer    | null: false, foreign_key: true |
-| city          | string     | null: false, foreign_key: true |
-| number        | string     | null: false, foreign_key: true |
-| building_name | string     |                                |
-| phone_number  | string     | null: false, foreign_key: true |
-| user          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| post_code        | string     | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| city             | string     | null: false                    |
+| number           | string     | null: false                    |
+| building_name    | string     |                                |
+| phone_number     | string     | null: false                    |
+| purchase_record  | references | foreign_key: true              |
 
 ### Association
 
 - belongs_to :purchase_record
-- belongs_to :user
