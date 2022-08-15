@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :item do
-    image {Faker::Lorem.sentence}
+
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+    end
 
     item_name {"ああ"}
     item_explain {"いいい"}
