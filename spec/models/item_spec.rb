@@ -74,23 +74,28 @@ RSpec.describe Item, type: :model do
       it "priceが299以下では登録できない" do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is too cheap (minimum is 300)")
+        expect(@item.errors.full_messages).to include("Price is out of setting range")
       end
       it "priceが10000000以上では登録できない" do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is too expensive (maximum is 9,999,999)")
+        expect(@item.errors.full_messages).to include("Price is out of setting range")
       end
 
       it 'priceが全角では登録できない' do
         @item.price = 'あああああ１'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width numbers")
+        expect(@item.errors.full_messages).to include("Price is out of setting range")
       end
-      it 'itemが英字では登録できない' do
+      it 'priceが英字では登録できない' do
         @item.price = 'abcdef'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width numbers")
+        expect(@item.errors.full_messages).to include("Price is out of setting range")
+      end
+      it 'priceが英字,数字混合では登録できない' do
+        @item.price = 'abcde1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is out of setting range")
       end
     end
   end
