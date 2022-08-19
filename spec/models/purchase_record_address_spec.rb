@@ -65,8 +65,8 @@ RSpec.describe PurchaseRecordAddress, type: :model do
         @purchase_record_address.valid?
         expect(@purchase_record_address.errors.full_messages).to include("Phone number is out of setting range")
       end
-      it 'phone_numberが12文字以下では登録できない' do
-        @purchase_record_address.phone_number = '12345678912'
+      it 'phone_numberが12文字以上では登録できない' do
+        @purchase_record_address.phone_number = '123456789123'
         @purchase_record_address.valid?
         expect(@purchase_record_address.errors.full_messages).to include("Phone number is out of setting range")
       end
