@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
   end
 
   def ensure_user
-    unless user_signed_in? && current_user.id == @item.user_id
+    if current_user.id == @item.user_id && @item.purchase_record.present?
       redirect_to root_path
     end
   end
